@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f2f2f2;
+        margin: 0;
+        padding: 0;
+    }
+
+    #container {
+        width: 350px;
+        margin: 80px auto;
+        text-align: center;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #aaa;
+    }
+
+    button {
+        padding: 10px 20px;
+        margin: 6px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    #ADD { background: #4CAF50; color: white; }
+    #REMOVE { background: #ff4444; color: white; }
+    #BUTTON { background: #008CBA; color: white; }
+
+    #status {
+        margin-top: 20px;
+        padding: 10px;
+        background: #eee;
+        border-radius: 5px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+<div id="container">
+    <button id="ADD">Add</button>
+    <button id="REMOVE">Remove</button>
+    <button id="BUTTON">Button</button>
+
+    <div id="status">No Items</div>
+</div>
+
+<script>
+const status = document.getElementById("status");
+const ADD = document.getElementById("ADD");
+const REMOVE = document.getElementById("REMOVE");
+const BUTTON = document.getElementById("BUTTON");
+let items = [];
+let totalAdds = 0;
+ 
+function updateStatus() {
+    const len = items.length;
+    if (len === 0) { status.innerHTML = "No Items"; }
+    else if (len % 2 === 0) { status.innerHTML = "Even"; }
+    else { status.innerHTML = "Odd"; }
+}
+ 
+function handleAdd() {
+    totalAdds++;
+    items.push(totalAdds);
+    updateStatus();
+}
+ 
+function handleRemove() {
+    if (items.length > 0) {
+        items.pop();
+    }
+    updateStatus();
+}
+ 
+function handleButton() {
+    alert("Button clicked!");
+}
+ 
+ADD.addEventListener("click", handleAdd);
+REMOVE.addEventListener("click", handleRemove);
+BUTTON.addEventListener("click", handleButton);
+</script>
+
+</body>
+</html>
